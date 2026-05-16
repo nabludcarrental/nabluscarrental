@@ -1,4 +1,3 @@
-<-- test 2026 --!>>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -14,11 +13,13 @@
     
     <style>
         :root {
-            --primary-gold: #dfb035; /* اللون الذهبي الفخم */
+            --primary-gold: #dfb035; 
+            --dark-gold: #b88f21;
             --dark-black: #080808;
             --mid-black: #1a1a1a;
             --white: #fff;
             --light-gold: rgba(223, 176, 53, 0.2);
+            --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #2c2208 50%, #080808 100%);
         }
 
         * {
@@ -29,13 +30,56 @@
         }
 
         body {
-            background-color: var(--dark-black);
+            background: var(--bg-gradient);
             color: var(--white);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+        }
+
+        /* --- Welcome Alert --- */
+        .welcome-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+        .welcome-box {
+            background: linear-gradient(135deg, var(--mid-black), #2c2208);
+            border: 2px solid var(--primary-gold);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 30px var(--primary-gold);
+            max-width: 90%;
+            width: 400px;
+        }
+        .welcome-box h2 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        .welcome-box button {
+            background: var(--primary-gold);
+            color: #000;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .welcome-box button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--primary-gold);
         }
 
         /* --- Header / Logo --- */
@@ -47,25 +91,28 @@
 
         .logo-box {
             display: inline-block;
-            border: 2px solid var(--primary-gold);
-            padding: 15px 30px;
+            border: 3px solid var(--primary-gold);
+            padding: 20px 40px;
             border-radius: 50px;
-            background: rgba(0,0,0,0.7);
-            box-shadow: 0 0 20px var(--light-gold);
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            box-shadow: 0 0 25px var(--primary-gold);
+            text-align: center;
         }
 
         .logo-main-text {
-            font-size: 2.3rem;
-            font-weight: bold;
+            font-size: 2.8rem;
+            font-weight: 900;
             color: var(--primary-gold);
-            text-shadow: 2px 2px 4px #000;
+            text-shadow: 2px 2px 8px #000;
+            letter-spacing: 2px;
         }
 
         .logo-sub-text {
-            font-size: 0.95rem;
-            color: #ccc;
-            letter-spacing: 4px;
-            margin-top: 3px;
+            font-size: 1rem;
+            color: #eee;
+            letter-spacing: 5px;
+            margin-top: 5px;
+            font-weight: bold;
         }
 
         .container {
@@ -74,119 +121,272 @@
             margin-bottom: 50px;
         }
 
-        /* --- الأسطول الفخم (السلايدر) --- */
-        .fleet-section {
-            background: var(--mid-black);
-            border-radius: 20px;
-            padding: 25px;
-            border: 1px solid #333;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
+        /* --- البانر الإعلاني القوي --- */
+        .promo-banner {
+            background: linear-gradient(45deg, #000, #3a2c04, #000);
+            border: 2px dashed var(--primary-gold);
             border-radius: 15px;
-            border: 2px solid var(--primary-gold);
-        }
-
-        .car-slide {
-            display: none;
-            width: 100%;
-            height: 100%;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(223, 176, 53, 0.2);
             position: relative;
+            overflow: hidden;
         }
-
-        .car-slide.active {
-            display: block;
-        }
-
-        .car-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .car-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,1) 70%);
-            text-align: right;
-        }
-
-        .car-title {
+        .promo-banner h2 {
+            color: var(--primary-gold);
             font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .promo-banner p {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .badge-discount {
+            background: red;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- أرقام التواصل المكتوبة --- */
+        .text-contacts {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--primary-gold);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .text-contacts h3 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+        .contact-numbers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .phone-row {
+            font-size: 1.2rem;
+            background: #222;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .phone-row span {
             font-weight: bold;
             color: var(--primary-gold);
         }
 
-        .car-subtitle {
-            font-size: 1.1rem;
-            color: #eee;
-            margin-top: 5px;
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.8);
-            color: var(--primary-gold);
-            border: 1px solid var(--primary-gold);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .arrow:hover {
-            background: var(--primary-gold);
-            color: #000;
-        }
-
-        .arrow-next { left: 20px; }
-        .arrow-prev { right: 20px; }
-
-        /* --- التواصل السريع --- */
-        .quick-contact {
-            display: flex;
-            justify-content: center;
+        /* --- أسطول السيارات (لوجوهات وبطاقات) --- */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
+        .car-card {
+            background: rgba(26, 26, 26, 0.9);
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+        .car-card:hover, .car-card.selected {
+            border-color: var(--primary-gold);
+            background: linear-gradient(180deg, #1a1a1a 0%, #30260a 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--light-gold);
+        }
+        .car-logo-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+        .car-card h4 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .car-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        .tag-first {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-gold);
+            color: #000;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 10px;
+        }
 
-        .contact-btn {
+        /* --- قسم الحجز المتكامل --- */
+        .booking-section {
+            background: var(--mid-black);
+            border: 2px solid var(--primary-gold);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: right;
+        }
+        .form-group label {
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #000;
+            color: #fff;
+            font-size: 1rem;
+            text-align: right;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-gold);
+            outline: none;
+        }
+        .submit-booking-btn {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: #000;
+            border: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 25px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary-gold), #b88f21);
+            justify-content: center;
+            gap: 10px;
             transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(223, 176, 53, 0.3);
+            margin-top: 10px;
+        }
+        .submit-booking-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px var(--light-gold);
         }
 
-        .contact-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(223, 176, 53, 0.5);
+        /* --- الدعم الفني للأعطال والتمديد --- */
+        .support-section {
+            background: linear-gradient(135deg, #5c0606 0%, #1a0202 100%);
+            border: 1px solid #ff4d4d;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+        }
+        .support-section h3 {
+            color: #ff4d4d;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        .support-section p {
+            color: #eee;
+            margin-bottom: 15px;
+        }
+        .support-phone {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 10px;
+            border: 1px dashed #ff4d4d;
         }
 
-        /* --- عن الشركة والفروع --- */
+        /* --- قسم التعليقات الآني --- */
+        .reviews-section {
+            background: var(--mid-black);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+        }
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .review-form input, .review-form textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #000;
+            color: #fff;
+            text-align: right;
+        }
+        .review-form button {
+            background: var(--primary-gold);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-left: 5px;
+        }
+        .review-item {
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 3px solid var(--primary-gold);
+            text-align: right;
+        }
+        .review-item h5 {
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .review-item p {
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        /* --- التنسيقات القديمة المحفوظة --- */
         .about-section {
             background: var(--mid-black);
             border-radius: 20px;
@@ -194,7 +394,6 @@
             border: 1px solid #333;
             margin-bottom: 30px;
         }
-
         .section-title {
             font-size: 2rem;
             color: var(--primary-gold);
@@ -203,7 +402,6 @@
             border-bottom: 2px solid var(--primary-gold);
             padding-bottom: 10px;
         }
-
         .about-content {
             font-size: 1.1rem;
             color: #ddd;
@@ -211,31 +409,26 @@
             text-align: right;
             margin-bottom: 25px;
         }
-
         .establishment-tag {
             font-weight: bold;
             color: var(--primary-gold);
         }
-
         .branches-title {
             font-size: 1.3rem;
             color: var(--primary-gold);
             margin-bottom: 10px;
             text-align: right;
         }
-
         .branches-list {
             list-style: none;
             text-align: right;
         }
-
         .branches-list li {
             position: relative;
             padding-right: 30px;
             margin-bottom: 10px;
             color: #eee;
         }
-
         .branches-list li::before {
             content: "\f3c5";
             font-family: "Font Awesome 6 Free";
@@ -244,14 +437,11 @@
             right: 0;
             color: var(--primary-gold);
         }
-
-        /* --- قسم الخدمات --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-
         .service-card {
             background: var(--mid-black);
             border-radius: 15px;
@@ -262,7 +452,6 @@
             align-items: center;
             text-align: center;
         }
-
         .service-icon-box {
             width: 80px;
             height: 80px;
@@ -275,19 +464,16 @@
             margin-bottom: 20px;
             box-shadow: 0 0 15px var(--light-gold);
         }
-
         .service-icon {
             font-size: 2.2rem;
             color: var(--primary-gold);
         }
-
         .service-card-title {
             font-size: 1.4rem;
             font-weight: bold;
             color: var(--primary-gold);
             margin-bottom: 12px;
         }
-
         .service-card-text {
             color: #ccc;
             line-height: 1.6;
@@ -296,60 +482,139 @@
 </head>
 <body>
 
+    <!-- رسالة الترحيب الأولى عند الدخول للموقع -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-box">
+            <h2>أهلاً بكم في نابلس</h2>
+            <p>شركة نابلس لتأجير السيارات ترحب بكم وتتمنى لكم رحلة سعيدة وآمنة.</p>
+            <button onclick="closeWelcome()">دخول الموقع</button>
+        </div>
+    </div>
+
     <header>
+        <!-- تصميم لوجو فخم باللون الأسود والذهبي بناء على طلبك -->
         <div class="logo-box">
             <div class="logo-main-text">نابلس</div>
-            <div class="logo-sub-text">Nablus Car Rental</div>
+            <div class="logo-sub-text">NABLUS CAR RENTAL</div>
         </div>
     </header>
 
     <div class="container">
 
-        <div class="fleet-section">
-            <div class="carousel-container">
-                <button class="arrow arrow-prev" onclick="changeFleetSlide(1)"><i class="fas fa-chevron-right"></i></button>
-                
-                <div class="car-slide active fleet-accent1">
-                    <img src="accent-white.jpg" alt="أكسنت بيضاء مزينة">
-                    <div class="car-overlay">
-                        <div class="car-title">هيونداي أكسنت 2023 - سيدان</div>
-                        <div class="car-subtitle">فخامة وأداء بأحدث الموديلات</div>
-                    </div>
-                </div>
+        <!-- النص الإعلاني الجاذب والقوي -->
+        <div class="promo-banner">
+            <h2>🔥 العرض الأقوى من شركة نابلس لتأجير السيارات 🔥</h2>
+            <p>خطط لرحلتك الطويلة ووفر الكثير معنا!</p>
+            <div class="badge-discount">خصم 10% فورياً عند الإستأجار الشهري</div>
+        </div>
 
-                <div class="car-slide fleet-picanto">
-                    <img src="picanto.jpg" alt="كيا بيكانتو سوداء">
-                    <div class="car-overlay">
-                        <div class="car-title">كيا مورنينج 2020 - اقتصادية</div>
-                        <div class="car-subtitle">مثالية للتنقل اليومي داخل نابلس</div>
-                    </div>
+        <!-- قسم أرقام التواصل المكتوبة كتابة -->
+        <div class="text-contacts">
+            <h3>📳 أرقام التواصل المباشر</h3>
+            <div class="contact-numbers-grid">
+                <div class="phone-row">
+                    <i class="fas fa-phone text-success"></i> رقم الجوال: <span>0592662776</span>
                 </div>
-
-                <div class="car-slide fleet-accent2">
-                    <img src="accent-modern.jpg" alt="أكسنت بيضاء حديثة">
-                    <div class="car-overlay">
-                        <div class="car-title">هيونداي أكسنت 2019 - عملية</div>
-                        <div class="car-subtitle">موثوقية وأمان لرحلتك</div>
-                    </div>
+                <div class="phone-row">
+                    <i class="fas fa-phone text-info"></i> رقم أريدو: <span>0560121239</span>
                 </div>
-
-                <button class="arrow arrow-next" onclick="changeFleetSlide(-1)"><i class="fas fa-chevron-left"></i></button>
             </div>
         </div>
 
-        <div class="quick-contact">
-            <a href="tel:0592662776" class="contact-btn">
-                <i class="fas fa-phone-alt"></i> إتصل الآن
-            </a>
-            <a href="https://wa.me/972592662776" target="_blank" class="contact-btn">
-                <i class="fab fa-whatsapp"></i> واتساب
-            </a>
+        <!-- أسطول السيارات على شكل بطاقات اختيار ولوجوهات - الكيا نيرو أولاً -->
+        <h2 class="section-title">🚗 أسطولنا المميز (اختر سيارتك للحجز)</h2>
+        <div class="fleet-grid">
+            
+            <div class="car-card selected" onclick="selectCar(this, 'كيا نيرو هايبرد')">
+                <span class="tag-first">الأكثر طلباً</span>
+                <i class="fas fa-car-side car-logo-icon"></i>
+                <h4>كيا نيرو هايبرد</h4>
+                <p>صديقة للبيئة واقتصادية جداً</p>
+            </div>
+
+            <div class="car-card" onclick="selectCar(this, 'هيونداي فينو (2022 - 2025)')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي فينو</h4>
+                <p>موديلات حديثة من 2022 إلى 2025</p>
+            </div>
+
+            <div class="car-card" onclick="selectCar(this, 'هيونداي أكسنت 2023')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي أكسنت 2023</h4>
+                <p>سيدان فخمة وأداء عصري</p>
+            </div>
+
+            <div class="car-card" onclick="selectCar(this, 'هيونداي أكسنت 2020')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي أكسنت 2020</h4>
+                <p>اعتمادية عالية وراحة تامة</p>
+            </div>
+
+            <div class="car-card" onclick="selectCar(this, 'هيونداي أكسنت 2019')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي أكسنت 2019</h4>
+                <p>عملية وممتازة للمشاوير اليومية</p>
+            </div>
+
+            <div class="car-card" onclick="selectCar(this, 'كيا بيكانتو 2020')">
+                <i class="fas fa-car-rear car-logo-icon"></i>
+                <h4>كيا بيكانتو 2020</h4>
+                <p>اقتصادية وصغيرة مثالية للمدينة</p>
+            </div>
+
         </div>
 
+        <!-- قسم الحجز المتكامل وإرسال البيانات للواتساب -->
+        <div class="booking-section">
+            <h3 class="section-title" style="border:none; margin-bottom:10px;">📅 طلب حجز سيارة سريع</h3>
+            <p style="text-align:right; margin-bottom:20px; color:#ccc;">قم باختيار السيارة من الأعلى وتعبئة البيانات وسيتم إرسال الطلب مباشرة لواتساب الشركة.</p>
+            
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>السيارة المختارة:</label>
+                    <input type="text" id="selectedCarInput" value="كيا نيرو هايبرد" readonly style="border-color: var(--primary-gold); color: var(--primary-gold); font-weight: bold;">
+                </div>
+
+                <div class="form-group">
+                    <label>تاريخ بدء الحجز:</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ساعة الاستلام بالضبط:</label>
+                    <input type="time" id="bookingTime" required>
+                </div>
+
+                <div class="form-group">
+                    <label>عدد أيام الحجز:</label>
+                    <input type="number" id="bookingDays" min="1" placeholder="مثال: 3" required>
+                </div>
+
+                <div class="form-group">
+                    <label>رقم تواصل الزبون:</label>
+                    <input type="tel" id="clientPhone" placeholder="أدخل رقم جوالك هنا" required>
+                </div>
+
+                <button class="submit-booking-btn" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> إرسال طلب الحجز عبر الواتساب
+                </button>
+            </div>
+        </div>
+
+        <!-- قسم الدعم الفني للأعطال وتمديد العقد -->
+        <div class="support-section">
+            <h3>🛠️ قسم الدعم الفني والطوارئ</h3>
+            <p>للتبليغ عن الأعطال المفاجئة أو لطلب تمديد عقد الإيجار الحالي، يرجى التواصل مباشرة مع القسم المختص:</p>
+            <div class="support-phone">
+                <i class="fas fa-headset text-danger"></i> 0566121339
+            </div>
+        </div>
+
+        <!-- عن الشركة (محفوظ من الكود القديم) -->
         <div class="about-section">
             <h2 class="section-title">عن شركة نابلس</h2>
             <div class="about-content">
-                <p>تعتبر < establishment-tag>شركة نابلس لتأجير السيارات</establishment-tag> من أبرز الشركات الرائدة في مجال تأجير السيارات في مدينة نابلس وفلسطين. تأسست الشركة في عام <establishment-tag>1980</establishment-tag>، وحرصت منذ ذلك الحين على تقديم خدمات تأجير السيارات بأحدث الموديلات وأعلى معايير الجودة لتلبية احتياجات الأفراد والشركات بأسعار منافسة.</p>
+                <p>تعتبر <span class="establishment-tag">شركة نابلس لتأجير السيارات</span> من أبرز الشركات الرائدة في مجال تأجير السيارات في مدينة نابلس وفلسطين. تأسست الشركة في عام <span class="establishment-tag">1980</span>، وحرصت منذ ذلك الحين على تقديم خدمات تأجير السيارات بأحدث الموديلات وأعلى معايير الجودة لتلبية احتياجات الأفراد والشركات بأسعار منافسة.</p>
                 <p>نفخر بأسطولنا الحديث الذي يتميز بتنوعه وخدماتنا الاستثنائية التي تجعلنا الخيار الأول لرحلتك.</p>
             </div>
             
@@ -361,8 +626,8 @@
             </ul>
         </div>
 
+        <!-- قسم الخدمات (محفوظ من الكود القديم مع ميزة الدفع الإلكتروني المتكامل) -->
         <div class="services-grid">
-            
             <div class="service-card">
                 <div class="service-icon-box">
                     <i class="fas fa-door-open service-icon"></i>
@@ -376,7 +641,7 @@
                     <i class="fas fa-credit-card service-icon"></i>
                 </div>
                 <div class="service-card-title">دفع إلكتروني متكامل</div>
-                <div class="service-card-text">تسهيلات دفع آمنة وسريعة عبر البطاقات الإلكترونية والرموز للحملة والزبائن.</div>
+                <div class="service-card-text">تسهيلات دفع آمنة وسريعة عبر البطاقات الإلكترونية والرموز للحملة والزبائن والمحفظة الرقمية.</div>
             </div>
 
             <div class="service-card">
@@ -386,28 +651,103 @@
                 <div class="service-card-title">سيارات حديثة (هايبريد وكهرباء)</div>
                 <div class="service-card-text">أسطولنا يضم أحدث السيارات الصديقة للبيئة (هايبريد وكهرباء) لتوفير التكلفة والراحة.</div>
             </div>
+        </div>
 
+        <!-- قسم تعليقات الزبائن الآني على الموقع -->
+        <div class="reviews-section" style="margin-top: 30px;">
+            <h3 class="section-title">💬 آراء وتعليقات الزبائن</h3>
+            
+            <!-- نموذج إضافة تعليق جديد -->
+            <div class="review-form">
+                <input type="text" id="reviewerName" placeholder="اسمك الكريم" required>
+                <textarea id="reviewerText" rows="3" placeholder="اكتب رأيك بالشركة والخدمة هنا..." required></textarea>
+                <button onclick="addReview()">نشر التعليق</button>
+            </div>
+
+            <!-- قائمة عرض التعليقات الحالية -->
+            <div class="reviews-list" id="reviewsContainer">
+                <div class="review-item">
+                    <h5>أحمد منصور</h5>
+                    <p>تعامل راقي جداً والسيارات دائماً نظيفة وجاهزة. أنصح بالتعامل معهم وبشدة 👍</p>
+                </div>
+                <div class="review-item">
+                    <h5>خليل النابلسي</h5>
+                    <p>أفضل شركة تأجير سيارات في المدينة، وميزة التوصيل لباب البيت ريحتنا كتير.</p>
+                </div>
+            </div>
         </div>
 
     </div>
 
     <script>
-        // برمجة السلايدر الخاص بالأسطول
-        let currentFleetSlide = 0;
-        const fleetSlides = document.querySelectorAll('.car-slide');
-
-        function showFleetSlide(index) {
-            fleetSlides.forEach(slide => slide.classList.remove('active'));
-            
-            if (index >= fleetSlides.length) { currentFleetSlide = 0; }
-            else if (index < 0) { currentFleetSlide = fleetSlides.length - 1; }
-            else { currentFleetSlide = index; }
-            
-            fleetSlides[currentFleetSlide].classList.add('active');
+        // إغلاق رسالة الترحيب
+        function closeWelcome() {
+            document.getElementById('welcomeOverlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcomeOverlay').style.display = 'none';
+            }, 500);
         }
 
-        function changeFleetSlide(direction) {
-            showFleetSlide(currentFleetSlide - direction); // عكس الاتجاه لتصحيح العرض من اليمين
+        // اختيار السيارة من قائمة البطاقات
+        function selectCar(element, carName) {
+            document.querySelectorAll('.car-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedCarInput').value = carName;
+        }
+
+        // تجميع بيانات الحجز وإرسالها مباشرة لواتساب الشركة
+        function sendToWhatsApp() {
+            const car = document.getElementById('selectedCarInput').value;
+            const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
+            const days = document.getElementById('bookingDays').value;
+            const phone = document.getElementById('clientPhone').value;
+
+            if(!date || !time || !days || !phone) {
+                alert('الرجاء تعبئة كافة الخانات المطلوبة لإتمام الحجز بنجاح.');
+                return;
+            }
+
+            // النص المنسق للرسالة
+            const message = `السلام عليكم ورحمة الله، أرغب في تقديم طلب حجز سيارة عبر الموقع الإلكتروني:\n\n` +
+                            `🚗 نوع السيارة: ${car}\n` +
+                            `📅 تاريخ الاستلام: ${date}\n` +
+                            `⏰ وقت الاستلام: ${time}\n` +
+                            `⏳ عدد الأيام: ${days} أيام\n` +
+                            `📱 رقم تواصل الزبون: ${phone}`;
+
+            // تشفير النص ليتناسب مع الرابط
+            const encodedMessage = encodeURIComponent(message);
+            
+            // رقم الواتساب الأساسي للشركة المستلم للطلبات
+            const whatsappUrl = `https://wa.me/972592662776?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // إضافة تعليق تفاعلي ولحظي على الموقع
+        function addReview() {
+            const nameInput = document.getElementById('reviewerName');
+            const textInput = document.getElementById('reviewerText');
+
+            if(!nameInput.value.trim() || !textInput.value.trim()) {
+                alert('الرجاء إدخال الاسم وكتابة التعليق أولاً.');
+                return;
+            }
+
+            const container = document.getElementById('reviewsContainer');
+
+            // إنشاء عنصر التعليق الجديد
+            const newItem = document.createElement('div');
+            newItem.className = 'review-item';
+            newItem.innerHTML = `<h5>${nameInput.value}</h5><p>${textInput.value}</p>`;
+
+            // إضافة التعليق في أعلى القائمة لتظهر مباشرة
+            container.insertBefore(newItem, container.firstChild);
+
+            // تفريغ الخانات بعد النشر
+            nameInput.value = '';
+            textInput.value = '';
         }
     </script>
 </body>
