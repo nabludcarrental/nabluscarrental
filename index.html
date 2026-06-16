@@ -9,8 +9,10 @@
     <meta name="keywords" content="تأجير سيارات نابلس, شركة تأجير سيارات نابلس, حجز سيارات نابلس, نابلس لتأجير السيارات, rent a car Nablus, سيارات هايبريد نابلس, توصيل سيارات نابلس">
     <meta name="author" content="نابلس لتأجير السيارات">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23080808%22 stroke=%22%23dfb035%22 stroke-width=%225%22/><text x=%2250%25%22 y=%2265%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Segoe UI, sans-serif%22 font-weight=%22900%22 font-size=%2255%22 fill=%22%23dfb035%22>N</text></svg>">
+    <!-- كود الأيقونة المصغرة الفخمة بحرف N للمتصفح بصيغة آمنة ومضمونة -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUiIHI9IjQ2IiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNkZmIwMzUiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjUwJSIgeT0iNjUlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iU2Vnb2UgVUksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iNTUiIGZpbGw9IiNkZmIwMzUiPk48L3RleHQ+PC9zdmc+">
 
+    <!-- مكتبة الأيقونات الشهيرة Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -39,55 +41,44 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- Welcome Alert --- */
-        .welcome-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 9999;
+        /* --- أزرار السوشيال ميديا في الزاوية العلوية --- */
+        .social-corner {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             display: flex;
-            justify-content: center;
+            gap: 12px;
+            z-index: 100;
+        }
+        .social-icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--mid-black);
+            border: 1px solid var(--primary-gold);
+            display: flex;
             align-items: center;
-            transition: 0.5s;
-        }
-        .welcome-box {
-            background: linear-gradient(135deg, var(--mid-black), #2c2208);
-            border: 2px solid var(--primary-gold);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 0 30px var(--primary-gold);
-            max-width: 90%;
-            width: 400px;
-        }
-        .welcome-box h2 {
+            justify-content: center;
             color: var(--primary-gold);
-            margin-bottom: 15px;
-            font-size: 2rem;
-        }
-        .welcome-box button {
-            background: var(--primary-gold);
-            color: #000;
-            border: none;
-            padding: 10px 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 20px;
+            font-size: 1.2rem;
+            text-decoration: none;
             transition: 0.3s;
+            box-shadow: 0 0 10px rgba(223, 176, 53, 0.3);
         }
-        .welcome-box button:hover {
-            transform: scale(1.05);
+        .social-icon-btn:hover {
+            transform: scale(1.15);
+            background-color: var(--primary-gold);
+            color: #000;
             box-shadow: 0 0 15px var(--primary-gold);
         }
 
-        /* --- Header / New N Logo --- */
+        /* --- Header / N Logo --- */
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 50px 20px 20px;
             width: 100%;
         }
 
@@ -98,7 +89,6 @@
             gap: 15px;
         }
 
-        /* تصميم أيقونة حرف N الفخم */
         .brand-n-icon {
             width: 90px;
             height: 90px;
@@ -188,7 +178,7 @@
             100% { transform: scale(1); }
         }
 
-        /* --- أرقام التواصل المكتوبة --- */
+        /* --- أرقام التواصل --- */
         .text-contacts {
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid var(--primary-gold);
@@ -222,7 +212,7 @@
             color: var(--primary-gold);
         }
 
-        /* --- أسطول السيارات (لوجوهات وبطاقات) --- */
+        /* --- أسطول السيارات --- */
         .fleet-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -271,7 +261,7 @@
             border-radius: 10px;
         }
 
-        /* --- قسم الحجز المتكامل --- */
+        /* --- قسم الحجز المتكامل والمطور بالتسعير الآلي --- */
         .booking-section {
             background: var(--mid-black);
             border: 2px solid var(--primary-gold);
@@ -307,6 +297,25 @@
             border-color: var(--primary-gold);
             outline: none;
         }
+        
+        /* مربع عرض السعر المباشر */
+        .price-display-box {
+            background: rgba(223, 176, 53, 0.1);
+            border: 1px solid var(--primary-gold);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            margin-top: 5px;
+        }
+        .price-display-box span {
+            font-size: 1.6rem;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary-gold);
+        }
+
         .submit-booking-btn {
             background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
             color: #000;
@@ -358,64 +367,7 @@
             border: 1px dashed #ff4d4d;
         }
 
-        /* --- قسم التعليقات الآني --- */
-        .reviews-section {
-            background: var(--mid-black);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid #333;
-            margin-bottom: 30px;
-        }
-        .review-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .review-form input, .review-form textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background: #000;
-            color: #fff;
-            text-align: right;
-        }
-        .review-form button {
-            background: var(--primary-gold);
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            align-self: flex-start;
-        }
-        .reviews-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-height: 300px;
-            overflow-y: auto;
-            padding-left: 5px;
-        }
-        .review-item {
-            background: #222;
-            padding: 15px;
-            border-radius: 10px;
-            border-right: 3px solid var(--primary-gold);
-            text-align: right;
-        }
-        .review-item h5 {
-            color: var(--primary-gold);
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-        .review-item p {
-            color: #ddd;
-            font-size: 0.95rem;
-        }
-
-        /* --- التنسيقات القديمة المحفوظة --- */
+        /* --- عن الشركة --- */
         .about-section {
             background: var(--mid-black);
             border-radius: 20px;
@@ -466,6 +418,8 @@
             right: 0;
             color: var(--primary-gold);
         }
+
+        /* --- قسم الخدمات --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -507,16 +461,28 @@
             color: #ccc;
             line-height: 1.6;
         }
+
+        /* تحسينات للشاشات الصغيرة لتفادي أي تداخل للأزرار العلوية */
+        @media (max-width: 600px) {
+            .social-corner {
+                position: static;
+                margin-top: 15px;
+                justify-content: center;
+            }
+            header {
+                padding-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="welcome-overlay" id="welcomeOverlay">
-        <div class="welcome-box">
-            <h2>أهلاً بكم في نابلس</h2>
-            <p>شركة نابلس لتأجير السيارات ترحب بكم وتتمنى لكم رحلة سعيدة وآمنة.</p>
-            <button onclick="closeWelcome()">دخول الموقع</button>
-        </div>
+    <!-- أزرار وسائل التواصل الاجتماعي الرسمية في الزاوية العلوية للموقع -->
+    <div class="social-corner">
+        <a href="https://www.facebook.com/nabluscar.co/?locale=ar_AR" target="_blank" class="social-icon-btn" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/nabluscarrental/" target="_blank" class="social-icon-btn" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@nabluscarrental" target="_blank" class="social-icon-btn" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/972592662776" target="_blank" class="social-icon-btn" title="واتساب المباشر"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <header>
@@ -531,12 +497,14 @@
 
     <div class="container">
 
+        <!-- النص الإعلاني الجاذب والقوي -->
         <div class="promo-banner">
             <h2>🔥 العرض الأقوى من شركة نابلس لتأجير السيارات 🔥</h2>
             <p>خطط لرحلتك الطويلة ووفر الكثير معنا!</p>
             <div class="badge-discount">خصم 10% فورياً عند الإستأجار الشهري</div>
         </div>
 
+        <!-- قسم أرقام التواصل المكتوبة كتابة -->
         <div class="text-contacts">
             <h3>📳 أرقام التواصل المباشر</h3>
             <div class="contact-numbers-grid">
@@ -549,4 +517,233 @@
             </div>
         </div>
 
-        <h2 class="section-title">🚗 أسطولنا المميز (اختر سي
+        <!-- أسطول السيارات -->
+        <h2 class="section-title">🚗 أسطولنا المميز (اختر سيارتك للحجز)</h2>
+        <div class="fleet-grid">
+            
+            <div class="car-card selected" id="card-niero" onclick="selectCarFromCard('كيا نيرو هايبرد')">
+                <span class="tag-first">الأكثر طلباً</span>
+                <i class="fas fa-car-side car-logo-icon"></i>
+                <h4>كيا نيرو هايبرد</h4>
+                <p>صديقة للبيئة واقتصادية جداً</p>
+            </div>
+
+            <div class="car-card" id="card-venio" onclick="selectCarFromCard('هيونداي فينو (2022 - 2025)')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي فينو</h4>
+                <p>موديلات حديثة من 2022 إلى 2025</p>
+            </div>
+
+            <div class="car-card" id="card-accent23" onclick="selectCarFromCard('هيونداي أكسنت 2023')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي أكسنت 2023</h4>
+                <p>سيدان فخمة وأداء عصري</p>
+            </div>
+
+            <div class="car-card" id="card-accent20" onclick="selectCarFromCard('هيونداي أكسنت 2020')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي أكسنت 2020</h4>
+                <p>اعتمادية عالية وراحة تامة</p>
+            </div>
+
+            <div class="car-card" id="card-accent19" onclick="selectCarFromCard('هيونداي أكسنت 2019')">
+                <i class="fas fa-car car-logo-icon"></i>
+                <h4>هيونداي أكسنت 2019</h4>
+                <p>عملية وممتازة للمشاوير اليومية</p>
+            </div>
+
+            <div class="car-card" id="card-picanto" onclick="selectCarFromCard('كيا بيكانتو 2020')">
+                <i class="fas fa-car-rear car-logo-icon"></i>
+                <h4>كيا بيكانتو 2020</h4>
+                <p>اقتصادية وصغيرة مثالية للمدينة</p>
+            </div>
+
+        </div>
+
+        <!-- قسم الحجز المتكامل وإرسال البيانات للواتساب بالتسعير التلقائي والقائمة المنسدلة -->
+        <div class="booking-section">
+            <h3 class="section-title" style="border:none; margin-bottom:10px;">📅 طلب حجز سيارة سريع</h3>
+            <p style="text-align:right; margin-bottom:20px; color:#ccc;">اختر السيارة المفضلة، حدد الأيام، وسيقوم النظام بحساب السعر الإجمالي فوراً لإرساله عبر الواتساب.</p>
+            
+            <div class="booking-form">
+                
+                <!-- سهم الاختيار من متعدد للسيارات -->
+                <div class="form-group">
+                    <label for="carDropdown">اختر السيارة من القائمة:</label>
+                    <select id="carDropdown" onchange="selectCarFromDropdown(this.value)">
+                        <option value="كيا نيرو هايبرد">كيا نيرو هايبرد</option>
+                        <option value="هيونداي فينو (2022 - 2025)">هيونداي فينو (2022 - 2025)</option>
+                        <option value="هيونداي أكسنت 2023">هيونداي أكسنت 2023</option>
+                        <option value="هيونداي أكسنت 2020">هيونداي أكسنت 2020</option>
+                        <option value="هيونداي أكسنت 2019">هيونداي أكسنت 2019</option>
+                        <option value="كيا بيكانتو 2020">كيا بيكانتو 2020</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookingDate">تاريخ بدء الحجز:</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookingDays">عدد أيام الحجز:</label>
+                    <input type="number" id="bookingDays" min="1" value="1" oninput="calculateTotal()" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientPhone">رقم تواصل الزبون:</label>
+                    <input type="tel" id="clientPhone" placeholder="أدخل رقم جوالك هنا" required>
+                </div>
+
+                <!-- صندوق عرض السعر النهائي التلقائي ضرب عدد الأيام -->
+                <div class="price-display-box">
+                    السعر الإجمالي التقريبي: <span id="totalPriceDisplay">0</span> شيكل جديد
+                </div>
+
+                <button class="submit-booking-btn" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> إرسال طلب الحجز عبر الواتساب
+                </button>
+            </div>
+        </div>
+
+        <!-- قسم الدعم الفني للأعطال وتمديد العقد -->
+        <div class="support-section">
+            <h3>🛠️ قسم الدعم الفني والطوارئ</h3>
+            <p>للتبليغ عن الأعطال المفاجئة أو لطلب تمديد عقد الإيجار الحالي، يرجى التواصل مباشرة مع القسم المختص:</p>
+            <div class="support-phone">
+                <i class="fas fa-headset text-danger"></i> 0566121339
+            </div>
+        </div>
+
+        <!-- عن الشركة -->
+        <div class="about-section">
+            <h2 class="section-title">عن شركة نابلس</h2>
+            <div class="about-content">
+                <p>تعتبر <span class="establishment-tag">شركة نابلس لتأجير السيارات</span> من أبرز الشركات الرائدة في مجال تأجير السيارات في مدينة نابلس وفلسطين. تأسست الشركة في عام <span class="establishment-tag">1980</span>، وحرصت منذ ذلك الحين على تقديم خدمات تأجير السيارات بأحدث الموديلات وأعلى معايير الجودة لتلبية احتياجات الأفراد والشركات بأسعار منافسة.</p>
+                <p>نفخر بأسطولنا الحديث الذي يتميز بتنوعه وخدماتنا الاستثنائية التي تجعلنا الخيار الأول لرحلتك.</p>
+            </div>
+            
+            <h3 class="branches-title">فروعنا في نابلس</h3>
+            <ul class="branches-list">
+                <li>المساكن الشعبية</li>
+                <li>شارع روجيب</li>
+                <li>شارع القدس - عند تاكسي نابلس</li>
+            </ul>
+        </div>
+
+        <!-- قسم الخدمات -->
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <i class="fas fa-door-open service-icon"></i>
+                </div>
+                <div class="service-card-title">توصيل لباب البيت</div>
+                <div class="service-card-text">خدمة توصيل السيارة إلى باب منزلك أو أي عنوان داخل مدينة نابلس لراحتك.</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <i class="fas fa-credit-card service-icon"></i>
+                </div>
+                <div class="service-card-title">دفع إلكتروني متكامل</div>
+                <div class="service-card-text">تسهيلات دفع آمنة وسريعة عبر البطاقات الإلكترونية والرموز للحملة والزبائن والمحفظة الرقمية.</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <i class="fas fa-leaf service-icon"></i>
+                </div>
+                <div class="service-card-title">سيارات حديثة (هايبريد وكهرباء)</div>
+                <div class="service-card-text">أسطولنا يضم أحدث السيارات الصديقة للبيئة (هايبريد وكهرباء) لتوفير التكلفة والراحة.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // تحديد أسعار افتراضية عادلة لكل سيارة لليوم الواحد (بالشيكل) لحساب المعادلة التلقائية
+        const carPrices = {
+            'كيا نيرو هايبرد': 180,
+            'هيونداي فينو (2022 - 2025)': 150,
+            'هيونداي أكسنت 2023': 140,
+            'هيونداي أكسنت 2020': 120,
+            'هيونداي أكسنت 2019': 110,
+            'كيا بيكانتو 2020': 90
+        };
+
+        // خريطة لربط أسماء السيارات بمعرّفات البطاقات لتسهيل التظليل
+        const carCardIds = {
+            'كيا نيرو هايبرد': 'card-niero',
+            'هيونداي فينو (2022 - 2025)': 'card-venio',
+            'هيونداي أكسنت 2023': 'card-accent23',
+            'هيونداي أكسنت 2020': 'card-accent20',
+            'هيونداي أكسنت 2019': 'card-accent19',
+            'كيا بيكانتو 2020': 'card-picanto'
+        };
+
+        // عند النقر على البطاقات العلوية
+        function selectCarFromCard(carName) {
+            // تحديث القائمة المنسدلة
+            document.getElementById('carDropdown').value = carName;
+            updateCardHighlight(carName);
+            calculateTotal();
+        }
+
+        // عند تغيير القائمة المنسدلة (السهم) في حقل الحجز
+        function selectCarFromDropdown(carName) {
+            updateCardHighlight(carName);
+            calculateTotal();
+        }
+
+        // تحديث تأثير الحدود المضيئة على البطاقات
+        function updateCardHighlight(carName) {
+            document.querySelectorAll('.car-card').forEach(card => card.classList.remove('selected'));
+            const activeCardId = carCardIds[carName];
+            if(activeCardId) {
+                document.getElementById(activeCardId).classList.add('selected');
+            }
+        }
+
+        // حساب السعر النهائي تلقائياً بناءً على اختيار السيارة وعدد الأيام
+        function calculateTotal() {
+            const selectedCar = document.getElementById('carDropdown').value;
+            const days = parseInt(document.getElementById('bookingDays').value) || 0;
+            const pricePerDay = carPrices[selectedCar] || 0;
+            
+            const total = pricePerDay * days;
+            document.getElementById('totalPriceDisplay').innerText = total;
+            return total;
+        }
+
+        // تجميع بيانات الحجز وإرسالها مباشرة لواتساب الشركة شامل السعر النهائي
+        function sendToWhatsApp() {
+            const car = document.getElementById('carDropdown').value;
+            const date = document.getElementById('bookingDate').value;
+            const days = document.getElementById('bookingDays').value;
+            const phone = document.getElementById('clientPhone').value;
+            const totalPrice = calculateTotal();
+
+            if(!date || !days || !phone || days <= 0) {
+                alert('الرجاء تعبئة كافة الخانات المطلوبة بشكل صحيح لإتمام الحجز بنجاح.');
+                return;
+            }
+
+            const message = `السلام عليكم ورحمة الله، أرغب في تقديم طلب حجز سيارة عبر الموقع الإلكتروني:\n\n` +
+                            `🚗 نوع السيارة: ${car}\n` +
+                            `📅 تاريخ الاستلام: ${date}\n` +
+                            `⏳ عدد الأيام: ${days} أيام\n` +
+                            `📱 رقم تواصل الزبون: ${phone}\n` +
+                            `💰 السعر الإجمالي المحسوب: ${totalPrice} شيكل جديد`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/972592662776?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // حساب السعر التلقائي عند تشغيل الموقع لأول مرة
+        window.onload = function() {
+            calculateTotal();
+        };
+    </script>
+</body>
+</html>
