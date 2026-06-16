@@ -1,20 +1,10 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>شركة نابلس لتأجير السيارات | أفضل خدمات تأجير سيارات في نابلس</title>
-
-    <meta name="description" content="تأجير سيارات في نابلس بأفضل الأسعار وأحدث الموديلات. تواصل معنا الآن لحجز سيارتك بسهولة وراحة وأمان.">
-
-    <meta name="keywords" content="تأجير سيارات نابلس, مكتب سيارات نابلس, كراء سيارات, rent a car nablus, تأجير سيارات فلسطين">
-</head>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نابلس لتأجير السيارات - Nablus Car Rental | خدمات مميزة وأسطول حديث</title>
     
+    <title>شركة نابلس لتأجير السيارات | أفضل خدمات تأجير سيارات في نابلس</title>
     <meta name="description" content="شركة نابلس لتأجير السيارات - تأسست عام 1980 في نابلس. أفضل وأحدث السيارات السياحية بأسعار مميزة. خدمة توصيل، دفع إلكتروني، وسيارات هايبريد وكهرباء.">
     <meta name="keywords" content="تأجير سيارات نابلس, شركة تأجير سيارات نابلس, حجز سيارات نابلس, نابلس لتأجير السيارات, rent a car Nablus, سيارات هايبريد نابلس, توصيل سيارات نابلس">
     <meta name="author" content="نابلس لتأجير السيارات">
@@ -92,20 +82,47 @@
             box-shadow: 0 0 15px var(--primary-gold);
         }
 
-        /* --- Header / Logo --- */
+        /* --- Header / New N Logo --- */
         header {
             text-align: center;
             padding: 40px 20px 20px;
             width: 100%;
         }
 
-        .logo-box {
-            display: inline-block;
+        .logo-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* تصميم أيقونة حرف N الفخم */
+        .brand-n-icon {
+            width: 90px;
+            height: 90px;
             border: 3px solid var(--primary-gold);
-            padding: 20px 40px;
-            border-radius: 50px;
-            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            border-radius: 24px;
+            background: radial-gradient(circle, #222 0%, #000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-gold);
             box-shadow: 0 0 25px var(--primary-gold);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            transform: rotate(-5deg); /* حركة التفاف خفيفة لتبدو رياضية وعصرية */
+            transition: 0.4s;
+        }
+
+        .logo-container:hover .brand-n-icon {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 0 35px var(--primary-gold);
+        }
+
+        .logo-box {
+            border-bottom: 2px solid var(--primary-gold);
+            padding: 5px 30px 15px 30px;
             text-align: center;
         }
 
@@ -502,10 +519,13 @@
     </div>
 
     <header>
-        <!-- تصميم لوجو فخم باللون الأسود والذهبي بناء على طلبك -->
-        <div class="logo-box">
-            <div class="logo-main-text">نابلس</div>
-            <div class="logo-sub-text">NABLUS CAR RENTAL</div>
+        <!-- تصميم لوجو فخم ومطور بحرف N باللون الأسود والذهبي بناء على طلبك -->
+        <div class="logo-container">
+            <div class="brand-n-icon">N</div>
+            <div class="logo-box">
+                <div class="logo-main-text">نابلس</div>
+                <div class="logo-sub-text">NABLUS CAR RENTAL</div>
+            </div>
         </div>
     </header>
 
