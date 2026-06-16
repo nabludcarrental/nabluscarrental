@@ -9,6 +9,8 @@
     <meta name="keywords" content="تأجير سيارات نابلس, شركة تأجير سيارات نابلس, حجز سيارات نابلس, نابلس لتأجير السيارات, rent a car Nablus, سيارات هايبريد نابلس, توصيل سيارات نابلس">
     <meta name="author" content="نابلس لتأجير السيارات">
 
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23080808%22 stroke=%22%23dfb035%22 stroke-width=%225%22/><text x=%2250%25%22 y=%2265%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Segoe UI, sans-serif%22 font-weight=%22900%22 font-size=%2255%22 fill=%22%23dfb035%22>N</text></svg>">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -111,7 +113,7 @@
             color: var(--primary-gold);
             box-shadow: 0 0 25px var(--primary-gold);
             text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
-            transform: rotate(-5deg); /* حركة التفاف خفيفة لتبدو رياضية وعصرية */
+            transform: rotate(-5deg); 
             transition: 0.4s;
         }
 
@@ -509,7 +511,6 @@
 </head>
 <body>
 
-    <!-- رسالة الترحيب الأولى عند الدخول للموقع -->
     <div class="welcome-overlay" id="welcomeOverlay">
         <div class="welcome-box">
             <h2>أهلاً بكم في نابلس</h2>
@@ -519,7 +520,6 @@
     </div>
 
     <header>
-        <!-- تصميم لوجو فخم ومطور بحرف N باللون الأسود والذهبي بناء على طلبك -->
         <div class="logo-container">
             <div class="brand-n-icon">N</div>
             <div class="logo-box">
@@ -531,14 +531,12 @@
 
     <div class="container">
 
-        <!-- النص الإعلاني الجاذب والقوي -->
         <div class="promo-banner">
             <h2>🔥 العرض الأقوى من شركة نابلس لتأجير السيارات 🔥</h2>
             <p>خطط لرحلتك الطويلة ووفر الكثير معنا!</p>
             <div class="badge-discount">خصم 10% فورياً عند الإستأجار الشهري</div>
         </div>
 
-        <!-- قسم أرقام التواصل المكتوبة كتابة -->
         <div class="text-contacts">
             <h3>📳 أرقام التواصل المباشر</h3>
             <div class="contact-numbers-grid">
@@ -551,234 +549,4 @@
             </div>
         </div>
 
-        <!-- أسطول السيارات على شكل بطاقات اختيار ولوجوهات - الكيا نيرو أولاً -->
-        <h2 class="section-title">🚗 أسطولنا المميز (اختر سيارتك للحجز)</h2>
-        <div class="fleet-grid">
-            
-            <div class="car-card selected" onclick="selectCar(this, 'كيا نيرو هايبرد')">
-                <span class="tag-first">الأكثر طلباً</span>
-                <i class="fas fa-car-side car-logo-icon"></i>
-                <h4>كيا نيرو هايبرد</h4>
-                <p>صديقة للبيئة واقتصادية جداً</p>
-            </div>
-
-            <div class="car-card" onclick="selectCar(this, 'هيونداي فينو (2022 - 2025)')">
-                <i class="fas fa-car car-logo-icon"></i>
-                <h4>هيونداي فينو</h4>
-                <p>موديلات حديثة من 2022 إلى 2025</p>
-            </div>
-
-            <div class="car-card" onclick="selectCar(this, 'هيونداي أكسنت 2023')">
-                <i class="fas fa-car car-logo-icon"></i>
-                <h4>هيونداي أكسنت 2023</h4>
-                <p>سيدان فخمة وأداء عصري</p>
-            </div>
-
-            <div class="car-card" onclick="selectCar(this, 'هيونداي أكسنت 2020')">
-                <i class="fas fa-car car-logo-icon"></i>
-                <h4>هيونداي أكسنت 2020</h4>
-                <p>اعتمادية عالية وراحة تامة</p>
-            </div>
-
-            <div class="car-card" onclick="selectCar(this, 'هيونداي أكسنت 2019')">
-                <i class="fas fa-car car-logo-icon"></i>
-                <h4>هيونداي أكسنت 2019</h4>
-                <p>عملية وممتازة للمشاوير اليومية</p>
-            </div>
-
-            <div class="car-card" onclick="selectCar(this, 'كيا بيكانتو 2020')">
-                <i class="fas fa-car-rear car-logo-icon"></i>
-                <h4>كيا بيكانتو 2020</h4>
-                <p>اقتصادية وصغيرة مثالية للمدينة</p>
-            </div>
-
-        </div>
-
-        <!-- قسم الحجز المتكامل وإرسال البيانات للواتساب -->
-        <div class="booking-section">
-            <h3 class="section-title" style="border:none; margin-bottom:10px;">📅 طلب حجز سيارة سريع</h3>
-            <p style="text-align:right; margin-bottom:20px; color:#ccc;">قم باختيار السيارة من الأعلى وتعبئة البيانات وسيتم إرسال الطلب مباشرة لواتساب الشركة.</p>
-            
-            <div class="booking-form">
-                <div class="form-group">
-                    <label>السيارة المختارة:</label>
-                    <input type="text" id="selectedCarInput" value="كيا نيرو هايبرد" readonly style="border-color: var(--primary-gold); color: var(--primary-gold); font-weight: bold;">
-                </div>
-
-                <div class="form-group">
-                    <label>تاريخ بدء الحجز:</label>
-                    <input type="date" id="bookingDate" required>
-                </div>
-
-                <div class="form-group">
-                    <label>ساعة الاستلام بالضبط:</label>
-                    <input type="time" id="bookingTime" required>
-                </div>
-
-                <div class="form-group">
-                    <label>عدد أيام الحجز:</label>
-                    <input type="number" id="bookingDays" min="1" placeholder="مثال: 3" required>
-                </div>
-
-                <div class="form-group">
-                    <label>رقم تواصل الزبون:</label>
-                    <input type="tel" id="clientPhone" placeholder="أدخل رقم جوالك هنا" required>
-                </div>
-
-                <button class="submit-booking-btn" onclick="sendToWhatsApp()">
-                    <i class="fab fa-whatsapp"></i> إرسال طلب الحجز عبر الواتساب
-                </button>
-            </div>
-        </div>
-
-        <!-- قسم الدعم الفني للأعطال وتمديد العقد -->
-        <div class="support-section">
-            <h3>🛠️ قسم الدعم الفني والطوارئ</h3>
-            <p>للتبليغ عن الأعطال المفاجئة أو لطلب تمديد عقد الإيجار الحالي، يرجى التواصل مباشرة مع القسم المختص:</p>
-            <div class="support-phone">
-                <i class="fas fa-headset text-danger"></i> 0566121339
-            </div>
-        </div>
-
-        <!-- عن الشركة (محفوظ من الكود القديم) -->
-        <div class="about-section">
-            <h2 class="section-title">عن شركة نابلس</h2>
-            <div class="about-content">
-                <p>تعتبر <span class="establishment-tag">شركة نابلس لتأجير السيارات</span> من أبرز الشركات الرائدة في مجال تأجير السيارات في مدينة نابلس وفلسطين. تأسست الشركة في عام <span class="establishment-tag">1980</span>، وحرصت منذ ذلك الحين على تقديم خدمات تأجير السيارات بأحدث الموديلات وأعلى معايير الجودة لتلبية احتياجات الأفراد والشركات بأسعار منافسة.</p>
-                <p>نفخر بأسطولنا الحديث الذي يتميز بتنوعه وخدماتنا الاستثنائية التي تجعلنا الخيار الأول لرحلتك.</p>
-            </div>
-            
-            <h3 class="branches-title">فروعنا في نابلس</h3>
-            <ul class="branches-list">
-                <li>المساكن الشعبية</li>
-                <li>شارع روجيب</li>
-                <li>شارع القدس - عند تاكسي نابلس</li>
-            </ul>
-        </div>
-
-        <!-- قسم الخدمات (محفوظ من الكود القديم مع ميزة الدفع الإلكتروني المتكامل) -->
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon-box">
-                    <i class="fas fa-door-open service-icon"></i>
-                </div>
-                <div class="service-card-title">توصيل لباب البيت</div>
-                <div class="service-card-text">خدمة توصيل السيارة إلى باب منزلك أو أي عنوان داخل مدينة نابلس لراحتك.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon-box">
-                    <i class="fas fa-credit-card service-icon"></i>
-                </div>
-                <div class="service-card-title">دفع إلكتروني متكامل</div>
-                <div class="service-card-text">تسهيلات دفع آمنة وسريعة عبر البطاقات الإلكترونية والرموز للحملة والزبائن والمحفظة الرقمية.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon-box">
-                    <i class="fas fa-leaf service-icon"></i>
-                </div>
-                <div class="service-card-title">سيارات حديثة (هايبريد وكهرباء)</div>
-                <div class="service-card-text">أسطولنا يضم أحدث السيارات الصديقة للبيئة (هايبريد وكهرباء) لتوفير التكلفة والراحة.</div>
-            </div>
-        </div>
-
-        <!-- قسم تعليقات الزبائن الآني على الموقع -->
-        <div class="reviews-section" style="margin-top: 30px;">
-            <h3 class="section-title">💬 آراء وتعليقات الزبائن</h3>
-            
-            <!-- نموذج إضافة تعليق جديد -->
-            <div class="review-form">
-                <input type="text" id="reviewerName" placeholder="اسمك الكريم" required>
-                <textarea id="reviewerText" rows="3" placeholder="اكتب رأيك بالشركة والخدمة هنا..." required></textarea>
-                <button onclick="addReview()">نشر التعليق</button>
-            </div>
-
-            <!-- قائمة عرض التعليقات الحالية -->
-            <div class="reviews-list" id="reviewsContainer">
-                <div class="review-item">
-                    <h5>أحمد منصور</h5>
-                    <p>تعامل راقي جداً والسيارات دائماً نظيفة وجاهزة. أنصح بالتعامل معهم وبشدة 👍</p>
-                </div>
-                <div class="review-item">
-                    <h5>خليل النابلسي</h5>
-                    <p>أفضل شركة تأجير سيارات في المدينة، وميزة التوصيل لباب البيت ريحتنا كتير.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        // إغلاق رسالة الترحيب
-        function closeWelcome() {
-            document.getElementById('welcomeOverlay').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('welcomeOverlay').style.display = 'none';
-            }, 500);
-        }
-
-        // اختيار السيارة من قائمة البطاقات
-        function selectCar(element, carName) {
-            document.querySelectorAll('.car-card').forEach(card => card.classList.remove('selected'));
-            element.classList.add('selected');
-            document.getElementById('selectedCarInput').value = carName;
-        }
-
-        // تجميع بيانات الحجز وإرسالها مباشرة لواتساب الشركة
-        function sendToWhatsApp() {
-            const car = document.getElementById('selectedCarInput').value;
-            const date = document.getElementById('bookingDate').value;
-            const time = document.getElementById('bookingTime').value;
-            const days = document.getElementById('bookingDays').value;
-            const phone = document.getElementById('clientPhone').value;
-
-            if(!date || !time || !days || !phone) {
-                alert('الرجاء تعبئة كافة الخانات المطلوبة لإتمام الحجز بنجاح.');
-                return;
-            }
-
-            // النص المنسق للرسالة
-            const message = `السلام عليكم ورحمة الله، أرغب في تقديم طلب حجز سيارة عبر الموقع الإلكتروني:\n\n` +
-                            `🚗 نوع السيارة: ${car}\n` +
-                            `📅 تاريخ الاستلام: ${date}\n` +
-                            `⏰ وقت الاستلام: ${time}\n` +
-                            `⏳ عدد الأيام: ${days} أيام\n` +
-                            `📱 رقم تواصل الزبون: ${phone}`;
-
-            // تشفير النص ليتناسب مع الرابط
-            const encodedMessage = encodeURIComponent(message);
-            
-            // رقم الواتساب الأساسي للشركة المستلم للطلبات
-            const whatsappUrl = `https://wa.me/972592662776?text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // إضافة تعليق تفاعلي ولحظي على الموقع
-        function addReview() {
-            const nameInput = document.getElementById('reviewerName');
-            const textInput = document.getElementById('reviewerText');
-
-            if(!nameInput.value.trim() || !textInput.value.trim()) {
-                alert('الرجاء إدخال الاسم وكتابة التعليق أولاً.');
-                return;
-            }
-
-            const container = document.getElementById('reviewsContainer');
-
-            // إنشاء عنصر التعليق الجديد
-            const newItem = document.createElement('div');
-            newItem.className = 'review-item';
-            newItem.innerHTML = `<h5>${nameInput.value}</h5><p>${textInput.value}</p>`;
-
-            // إضافة التعليق في أعلى القائمة لتظهر مباشرة
-            container.insertBefore(newItem, container.firstChild);
-
-            // تفريغ الخانات بعد النشر
-            nameInput.value = '';
-            textInput.value = '';
-        }
-    </script>
-</body>
-</html>
+        <h2 class="section-title">🚗 أسطولنا المميز (اختر سي
